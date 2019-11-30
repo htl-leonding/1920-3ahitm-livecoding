@@ -1,0 +1,77 @@
+= JDBC
+// Metadata
+:author: Thomas Stütz
+:email: <t.stuetz@htl-leonding.ac.at>
+:date: 2019-11-29
+:revision:  1.0
+// Settings
+:source-highlighter: coderay
+:icons: font
+:sectnums:    // Nummerierung der Überschriften / section numbering
+// Refs:
+:imagesdir: images
+:sourcedir-code: src/main/java/at/htl/jdbcprimer
+:sourcedir-test: src/test/java/at/htl/jdbcprimer
+:toc:
+
+Version: {revision}
+
+++++
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+++++
+
+
+
+
+
+== Vorbereiten der Datenbank
+
+. Download der Datenbank
+  http://edufs.edu.htl-leonding.ac.at/~t.stuetz/download/nvs/db-derby-10.14.2.0-bin.zip
+
+  Es wird empfohlen, die Datenbank im Ordner C:\opt\... zu speichern und nicht im Datenverzeichnis.
+
+. Anschließend das zip-File entpacken
+
+. in IDE Terminal-Fenster öffnen und Datenbank starten
++
+----
+mkdir db
+cd db
+/opt/db-derby-10.14.2.0-bin/bin/startNetworkServer -noSecurityManager
+----
++
+.Ausgabe
+----
+Fri Nov 29 09:11:56 CET 2019 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----
+
+== Erstellen des Java-Codes
+
+=== DDL - CREATE TABLE
+
+.Erstellen der Connection, des Statements und ausführen einer DDL-SQL-Operation
+[source,java]
+----
+include::{sourcedir-test}/model/JdbcTest.java[tags=create-connection]
+----
+<1> Use try-with-block, for automatic closing the resources
+
+=== DML - INSERT
+
+.DML-SQL-Operation
+[source,java]
+----
+include::{sourcedir-test}/model/JdbcTest.java[tags=insert]
+----
+<1> Use try-with-block, for automatic closing the resources
+
+
+=== DQL - SELECT
+
+.DQL-SQL-Operation
+[source,java]
+----
+include::{sourcedir-test}/model/JdbcTest.java[tags=query]
+----
+<1> Use try-with-block, for automatic closing the resources

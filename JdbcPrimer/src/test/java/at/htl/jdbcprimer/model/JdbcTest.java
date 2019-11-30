@@ -31,11 +31,11 @@ class JdbcTest {
          * RESSOURCE wird automatisch geschlossen
          */
         // tag::create-connection[]
-        try (Connection conn = DriverManager.getConnection(
+        try (Connection conn = DriverManager.getConnection( // <1>
                 url,
                 username,
                 password)) {
-            try (Statement stmt = conn.createStatement()) {
+            try (Statement stmt = conn.createStatement()) {  // <1>
                 String sql = "CREATE TABLE person (" +
                         "id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY," +
                         "name VARCHAR(255)," +
@@ -64,17 +64,15 @@ class JdbcTest {
                         "VALUES ('Tyrion','Kingslanding','Lannister')";
                 stmt.executeUpdate(sql);
             }
-
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // end::insert
+        // end::insert[]
         fail("not yet implemented");
     }
 
     @Test
     void test003_queryDatabase() {
-        // tag::query[]
         try (Connection conn = DriverManager.getConnection(
                 url,
                 username,
@@ -92,7 +90,6 @@ class JdbcTest {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // end::query
 
     }
 
@@ -116,11 +113,10 @@ class JdbcTest {
                     );
                 }
             }
-
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        // end::query
+        // end::query[]
 
     }
 
