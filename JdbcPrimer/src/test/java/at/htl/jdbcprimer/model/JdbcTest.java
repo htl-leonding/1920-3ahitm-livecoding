@@ -21,7 +21,7 @@ class JdbcTest {
     void test001_createConnection() {
         /**
          * 1. Schritt: Erstellen einer Connection
-         * Deese Connection wird in einer try-with-Resource geöffnet.
+         * Diese Connection wird in einer try-with-Resource geöffnet.
          * Damit muss man sich nicht darum kümmern, dass die Connection
          * wieder geschlossen wird
          *
